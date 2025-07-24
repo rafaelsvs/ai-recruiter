@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ai-recruiter-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-contract/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-contract/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-data/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-data/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-infra/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-infra/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-report/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-recruiter-report/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

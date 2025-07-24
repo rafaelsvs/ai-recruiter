@@ -28,10 +28,28 @@ services:
     depends_on:
       - postgres
       - redis
+      - ai-feedback-service
     ports:
       - "8080:8080"
     env_file:
       - .env
+
+  ai-feedback-service:
+    build:
+      context: ../ai-recruiter-ml    # caminho relativo do compose para o Dockerfile
+    container_name: airecruiter-ml
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    depends_on:
+      - redis
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 3g
+
 
 volumes:
   postgres_data:

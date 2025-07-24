@@ -1,8 +1,13 @@
 package com.airecruiter.infra.client;
 
-import com.airecruiter.contract.dto.*;
+import com.airecruiter.contract.dto.AnswerSubmissionRequest;
+import com.airecruiter.contract.dto.FeedbackResponseDTO;
+import com.airecruiter.contract.dto.InterviewContextRequest;
 import com.airecruiter.core.domain.port.AiClientPort;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,22 +15,40 @@ import java.util.List;
 @Component
 public class AiPythonClient implements AiClientPort {
 
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    @Value("${ai.service.url:http://localhost:8000}")
+    private String aiServiceUrl;
+
     @Override
     public List<String> fetchQuestions(InterviewContextRequest context) {
-        return Arrays.asList(
-                "Explique uma decisão técnica difícil que você tomou.",
-                "Como você lida com conflitos dentro do time?",
-                "Quais métricas você acompanha em produção?"
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<InterviewContextRequest> entity = new HttpEntity<>(context, headers);
+
+        ResponseEntity<String[]> response = restTemplate.postForEntity(
+                aiServiceUrl + "/generateQuestions",
+                entity,
+                String[].class
         );
+
+        return Arrays.asList(response.getBody());
     }
 
     @Override
     public FeedbackResponseDTO evaluateAnswer(AnswerSubmissionRequest request) {
-        return FeedbackResponseDTO.builder()
-                .userId(request.getUserId())
-                .questionId(request.getQuestionId())
-                .score(80)
-                .message("Sua resposta mostrou domínio, mas poderia explorar mais exemplos concretos.")
-                .build();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<AnswerSubmissionRequest> entity = new HttpEntity<>(request, headers);
+
+        ResponseEntity<FeedbackResponseDTO> response = restTemplate.postForEntity(
+                aiServiceUrl + "/evaluateAnswer",
+                entity,
+                FeedbackResponseDTO.class
+        );
+
+        return response.getBody();
     }
 }

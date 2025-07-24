@@ -33,10 +33,12 @@ services:
       - "8080:8080"
     env_file:
       - .env
+    environment:
+      - AI_SERVICE_URL=http://airecruiter-ml:8000
 
   ai-feedback-service:
     build:
-      context: ../ai-recruiter-ml    # caminho relativo do compose para o Dockerfile
+      context: ../ai-recruiter-ml
     container_name: airecruiter-ml
     ports:
       - "8000:8000"
@@ -49,7 +51,6 @@ services:
       resources:
         limits:
           memory: 3g
-
 
 volumes:
   postgres_data:

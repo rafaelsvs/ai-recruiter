@@ -29,6 +29,10 @@ spring:
       host: redis
       port: 6379
 
+  ai:
+    service:
+      url: ${AI_SERVICE_URL:http://airecruiter-ml:8000}
+
 logging:
   level:
     root: INFO

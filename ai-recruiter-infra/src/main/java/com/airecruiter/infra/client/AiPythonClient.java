@@ -17,11 +17,17 @@ public class AiPythonClient implements AiClientPort {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${ai.service.url:http://localhost:8000}")
+    @Value("${ai.service.url}")
     private String aiServiceUrl;
 
     @Override
     public List<String> fetchQuestions(InterviewContextRequest context) {
+        System.out.println(">>> Enviando para /generateQuestions: " +
+                "role=" + context.getRole() +
+                ", seniority=" + context.getSeniority() +
+                ", domain=" + context.getDomain()
+        );
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -38,6 +44,12 @@ public class AiPythonClient implements AiClientPort {
 
     @Override
     public FeedbackResponseDTO evaluateAnswer(AnswerSubmissionRequest request) {
+        System.out.println(">>> Enviando para /evaluateAnswer: " +
+                "userId=" + request.getUserId() +
+                ", questionId=" + request.getQuestionId() +
+                ", answer=" + request.getAnswer()
+        );
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 

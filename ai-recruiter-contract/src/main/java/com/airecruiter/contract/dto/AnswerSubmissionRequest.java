@@ -9,7 +9,15 @@ public class AnswerSubmissionRequest {
     private String seniority;
     private String domain;
 
-    public String getUserId() { return userId; }
-    public String getQuestionId() { return questionId; }
-}
+    public String getUserId() {
+        return userId;
+    }
 
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+}

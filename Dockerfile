@@ -6,6 +6,6 @@ WORKDIR /app
 ARG JAR_FILE=ai-recruiter-app/target/ai-recruiter-app-1.0.0.jar
 COPY ${JAR_FILE} app.jar
 
-EXPOSE 8080
+EXPOSE 8080 5005
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
